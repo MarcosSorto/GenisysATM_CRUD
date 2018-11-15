@@ -22,12 +22,25 @@ namespace GenisysATM_CRUD
 
         }
 
+   
+
+
+        /// <summary>
+        /// instancia de frmClientes y lo muestra en la pantalla.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            frmClientes cliente = new frmClientes();
+            cliente.ShowDialog();
+        }
         /// <summary>
         /// Cierra el menú principal y cierra la aplicación
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnSalir_Click(object sender, EventArgs e)
+        private void btnSalir_Click_1(object sender, EventArgs e)
         {
             DialogResult resp = MessageBox.Show("¿Está seguro que desa salir del programa?", "Control de cajeros automáticos", MessageBoxButtons.YesNo);
 
