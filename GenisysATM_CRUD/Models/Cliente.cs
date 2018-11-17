@@ -77,8 +77,7 @@ namespace GenisysATM.Models
             }
         }
 
-
-        public static Cliente ObtenerClienteNombre(string nombre)
+        public static Cliente ObtenerClienteNombre(string Nombre)
         {
             Conexion conexion = new Conexion(@"(local)\sqlexpress", "GenisysATM_V2");
             string sql;
@@ -87,7 +86,7 @@ namespace GenisysATM.Models
             // Query SQL
             sql = @"SELECT *
                     FROM ATM.Cliente
-                    WHERE nombres = @nombre";
+                    WHERE identidad = @Nombre";
 
             SqlCommand cmd = conexion.EjecutarComando(sql);
             SqlDataReader rdr;
@@ -96,7 +95,7 @@ namespace GenisysATM.Models
             {
                 using (cmd)
                 {
-                    cmd.Parameters.Add("@nombre", SqlDbType.NVarChar, 100).Value = nombre;
+                    cmd.Parameters.Add("@Nombre", SqlDbType.Char, 13).Value = Nombre;
 
                     rdr = cmd.ExecuteReader();
                 }
@@ -126,6 +125,9 @@ namespace GenisysATM.Models
                 conexion.CerrarConexion();
             }
         }
+
+
+
         /// <summary>
         /// lista todos los cliente que se encuentran almacenados en la tabla ATM.cliente
         /// </summary>

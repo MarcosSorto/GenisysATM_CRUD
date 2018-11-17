@@ -36,11 +36,13 @@
             this.btnClientes = new System.Windows.Forms.Button();
             this.lbltitulo = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.grpOpciones.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpOpciones
             // 
+            this.grpOpciones.Controls.Add(this.button1);
             this.grpOpciones.Controls.Add(this.btnCuentas);
             this.grpOpciones.Controls.Add(this.btnConfiguracion);
             this.grpOpciones.Controls.Add(this.btnTarjetas);
@@ -49,7 +51,7 @@
             this.grpOpciones.Controls.Add(this.lbltitulo);
             this.grpOpciones.Location = new System.Drawing.Point(12, 33);
             this.grpOpciones.Name = "grpOpciones";
-            this.grpOpciones.Size = new System.Drawing.Size(487, 202);
+            this.grpOpciones.Size = new System.Drawing.Size(487, 248);
             this.grpOpciones.TabIndex = 7;
             this.grpOpciones.TabStop = false;
             this.grpOpciones.Text = "Opciones Disponibles";
@@ -75,7 +77,7 @@
             // 
             // btnTarjetas
             // 
-            this.btnTarjetas.Location = new System.Drawing.Point(349, 110);
+            this.btnTarjetas.Location = new System.Drawing.Point(349, 147);
             this.btnTarjetas.Name = "btnTarjetas";
             this.btnTarjetas.Size = new System.Drawing.Size(102, 58);
             this.btnTarjetas.TabIndex = 10;
@@ -84,11 +86,11 @@
             // 
             // btnServicios
             // 
-            this.btnServicios.Location = new System.Drawing.Point(20, 96);
+            this.btnServicios.Location = new System.Drawing.Point(20, 147);
             this.btnServicios.Name = "btnServicios";
             this.btnServicios.Size = new System.Drawing.Size(102, 58);
             this.btnServicios.TabIndex = 9;
-            this.btnServicios.Text = "Servicios";
+            this.btnServicios.Text = "Servicios Públicos";
             this.btnServicios.UseVisualStyleBackColor = true;
             this.btnServicios.Click += new System.EventHandler(this.btnServicios_Click);
             // 
@@ -106,7 +108,7 @@
             // 
             this.lbltitulo.AutoSize = true;
             this.lbltitulo.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltitulo.Location = new System.Drawing.Point(162, 125);
+            this.lbltitulo.Location = new System.Drawing.Point(162, 109);
             this.lbltitulo.Name = "lbltitulo";
             this.lbltitulo.Size = new System.Drawing.Size(127, 24);
             this.lbltitulo.TabIndex = 7;
@@ -114,7 +116,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(361, 258);
+            this.btnSalir.Location = new System.Drawing.Point(361, 298);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(138, 34);
             this.btnSalir.TabIndex = 14;
@@ -122,16 +124,27 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click_1);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(175, 147);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(102, 58);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Clientes y Servicios";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(525, 301);
+            this.ClientSize = new System.Drawing.Size(525, 344);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.grpOpciones);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cajeros Automáticos Genisys ATM";
+            this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.grpOpciones.ResumeLayout(false);
             this.grpOpciones.PerformLayout();
             this.ResumeLayout(false);
@@ -148,6 +161,7 @@
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Label lbltitulo;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button button1;
     }
 }
 
