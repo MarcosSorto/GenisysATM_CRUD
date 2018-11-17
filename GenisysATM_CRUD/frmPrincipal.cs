@@ -61,5 +61,17 @@ namespace GenisysATM_CRUD
             frmServicioPublico nuevo = new frmServicioPublico();
             nuevo.ShowDialog();
         }
+
+        /// <summary>
+        /// Crea una instancia del formulario CRUD configuración 
+        /// y lo mestra en pntalla
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnConfiguracion_Click(object sender, EventArgs e)
+        {
+            frmConfiguraciones nuevo = new frmConfiguraciones();
+            nuevo.ShowDialog();
+        }
     }
 }

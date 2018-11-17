@@ -71,6 +71,7 @@
             this.btnConfiguracion.TabIndex = 11;
             this.btnConfiguracion.Text = "Configuraciones";
             this.btnConfiguracion.UseVisualStyleBackColor = true;
+            this.btnConfiguracion.Click += new System.EventHandler(this.btnConfiguracion_Click);
             // 
             // btnTarjetas
             // 
