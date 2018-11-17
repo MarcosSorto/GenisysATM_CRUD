@@ -89,6 +89,7 @@
             this.btnServicios.TabIndex = 9;
             this.btnServicios.Text = "Servicios";
             this.btnServicios.UseVisualStyleBackColor = true;
+            this.btnServicios.Click += new System.EventHandler(this.btnServicios_Click);
             // 
             // btnClientes
             // 

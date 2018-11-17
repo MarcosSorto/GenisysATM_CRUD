@@ -19,7 +19,7 @@ AS
 BEGIN
  DECLARE @codigo INT
  SET @codigo = (SELECT id FROM ATM.ServicioPublico WHERE descripcion=@descripcion);
- UPDATE ATM.ServicioPublico SET descripcion = @descripcionNueva;
+ UPDATE ATM.ServicioPublico SET descripcion = @descripcionNueva WHERE id = @codigo;
 END
 GO
 

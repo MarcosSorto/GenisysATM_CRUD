@@ -52,6 +52,7 @@
             this.grpOperaciones.TabIndex = 29;
             this.grpOperaciones.TabStop = false;
             this.grpOperaciones.Text = "Operaciones";
+            this.grpOperaciones.Enter += new System.EventHandler(this.grpOperaciones_Enter);
             // 
             // btnSalir
             // 
@@ -71,6 +72,7 @@
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnEditar
             // 
@@ -80,6 +82,7 @@
             this.btnEditar.TabIndex = 1;
             this.btnEditar.Text = "Actualizar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnAgregar
             // 
@@ -89,6 +92,7 @@
             this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "Guardar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // txtDescripcion
             // 
@@ -115,6 +119,7 @@
             this.lstServicios.Name = "lstServicios";
             this.lstServicios.Size = new System.Drawing.Size(183, 199);
             this.lstServicios.TabIndex = 16;
+            this.lstServicios.Click += new System.EventHandler(this.lstServicios_Click);
             // 
             // label1
             // 
@@ -139,6 +144,7 @@
             this.Name = "frmServicioPublico";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Control de cajeros automáticos GenisysATM";
+            this.Load += new System.EventHandler(this.frmServicioPublico_Load);
             this.grpOperaciones.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

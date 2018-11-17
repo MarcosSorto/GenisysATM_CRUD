@@ -49,5 +49,17 @@ namespace GenisysATM_CRUD
                 this.Close();
             }
         }
+
+        /// <summary>
+        /// Crea una instancia del formulario CRUD serviciosPublicos y lo muestra en
+        /// pantalla.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnServicios_Click(object sender, EventArgs e)
+        {
+            frmServicioPublico nuevo = new frmServicioPublico();
+            nuevo.ShowDialog();
+        }
     }
 }
