@@ -112,7 +112,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(361, 270);
+            this.btnSalir.Location = new System.Drawing.Point(361, 258);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(138, 34);
             this.btnSalir.TabIndex = 14;
@@ -124,7 +124,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(525, 316);
+            this.ClientSize = new System.Drawing.Size(525, 301);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.grpOpciones);
             this.Name = "frmPrincipal";
