@@ -75,6 +75,12 @@
     <Compile Include="frmServicioPublico.Designer.cs">
       <DependentUpon>frmServicioPublico.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTargetasCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTargetasCredito.Designer.cs">
+      <DependentUpon>frmTargetasCredito.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ATM.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Conexion.cs" />
@@ -100,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmServicioPublico.resx">
       <DependentUpon>frmServicioPublico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTargetasCredito.resx">
+      <DependentUpon>frmTargetasCredito.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -127,6 +136,7 @@
     <Content Include="sp_Clientes%28INSERT_UPDATE_DELETE%29.sql" />
     <Content Include="sp_Configuracion%28INSERT_UPDATE_DELETE%29.sql" />
     <Content Include="sp_ServicioPublico%28INSERT_UPDATE_DELETE%29.sql" />
+    <Content Include="sp_ServiciosClientes%28INSERT_UPDATE_DELETE%29.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
