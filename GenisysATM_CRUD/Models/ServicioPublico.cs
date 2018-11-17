@@ -20,6 +20,50 @@ namespace GenisysATM.Models
         public ServicioPublico() { }
 
         // Métodos
+        /// <summary>
+        /// obtiene la información de un servicio publico 
+        /// </summary>
+        /// <returns>unServicio</returns>
+        public static ServicioPublico obtenerServicio(string descripcion)
+        {
+            Conexion conexion = new Conexion(@"(local)\sqlexpress", "GenisysATM_V2");
+            string sql;
+            ServicioPublico resultado = new ServicioPublico();
+
+            // Query SQL
+            sql = @"SELECT *
+                    FROM ATM.ServicioPublico
+                    WHERE descripcion = @descripcion";
+
+            SqlCommand cmd = conexion.EjecutarComando(sql);
+            SqlDataReader rdr;
+
+            try
+            {
+                using (cmd)
+                {
+                    cmd.Parameters.Add("@descripcion", SqlDbType.NVarChar, 100).Value = descripcion;
+
+                    rdr = cmd.ExecuteReader();
+                }
+
+                while (rdr.Read())
+                {
+                    resultado.id = rdr.GetInt32(0);
+                    resultado.descripcion = rdr.GetString(1);
+                }
+
+                return resultado;
+            }
+            catch (SqlException)
+            {
+                return resultado;
+            }
+            finally
+            {
+                conexion.CerrarConexion();
+            }
+        }
         
     }
 }
