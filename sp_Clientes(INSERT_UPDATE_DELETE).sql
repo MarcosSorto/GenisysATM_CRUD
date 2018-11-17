@@ -34,12 +34,13 @@ GO
 
 
 CREATE PROCEDURE sp_EliminarCliente(
-@nombre NVARCHAR(100)
+@nombre NVARCHAR(100),
+@identidad CHAR(13)
 )
 AS
 BEGIN
 	DECLARE @codigo int;
-	SET @codigo = (SELECT id FROM ATM.Cliente WHERE nombre=@nombre);
+	SET @codigo = (SELECT id FROM ATM.Cliente WHERE nombres=@nombre and identidad=@identidad);
 
 	DELETE FROM ATM.Cliente WHERE id = @codigo;
 END

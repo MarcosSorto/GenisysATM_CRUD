@@ -67,7 +67,7 @@ namespace GenisysATM.Models
 
                 return resultado;
             }
-            catch (SqlException ex)
+            catch (SqlException )
             {
                 return resultado;
             }
@@ -77,6 +77,55 @@ namespace GenisysATM.Models
             }
         }
 
+
+        public static Cliente ObtenerClienteNombre(string nombre)
+        {
+            Conexion conexion = new Conexion(@"(local)\sqlexpress", "GenisysATM_V2");
+            string sql;
+            Cliente resultado = new Cliente();
+
+            // Query SQL
+            sql = @"SELECT *
+                    FROM ATM.Cliente
+                    WHERE nombres = @nombre";
+
+            SqlCommand cmd = conexion.EjecutarComando(sql);
+            SqlDataReader rdr;
+
+            try
+            {
+                using (cmd)
+                {
+                    cmd.Parameters.Add("@nombre", SqlDbType.NVarChar, 100).Value = nombre;
+
+                    rdr = cmd.ExecuteReader();
+                }
+
+                while (rdr.Read())
+                {
+                    resultado.id = rdr.GetInt32(0);
+                    resultado.nombres = rdr.GetString(1);
+                    resultado.apellidos = rdr.GetString(2);
+                    resultado.identidad = rdr.GetString(3);
+                    resultado.direccion = rdr.GetString(4);
+                    resultado.telefono = rdr.GetString(5);
+                    resultado.celular = rdr.GetString(6);
+
+                    // Remover espacios en blanco
+
+                }
+
+                return resultado;
+            }
+            catch (SqlException)
+            {
+                return resultado;
+            }
+            finally
+            {
+                conexion.CerrarConexion();
+            }
+        }
         /// <summary>
         /// lista todos los cliente que se encuentran almacenados en la tabla ATM.cliente
         /// </summary>
@@ -217,6 +266,47 @@ namespace GenisysATM.Models
 
             cmd.Parameters.Add(new SqlParameter("@celular", SqlDbType.Char, 9));
             cmd.Parameters["@celular"].Value = elCliente.celular;
+
+            // intentamos insertar al nuevo cliente
+            try
+            {
+                // establecemos la conexión
+                conn.EstablecerConexion();
+
+                // ejecutamos el comando
+                cmd.ExecuteNonQuery();
+
+                return true;
+
+            }
+            catch (SqlException ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace + "Detalles de la excepción");
+                return false;
+            }
+            finally
+            {
+                conn.CerrarConexion();
+            }
+           
+        }
+
+        public static bool EliminarCliente(Cliente elCliente)
+        {
+            Conexion conn = new Conexion(@"(local)\sqlexpress", "GenisysATM_V2");
+
+            // enviamos y especificamos el comando a ejecutar
+            SqlCommand cmd = conn.EjecutarComando("sp_EliminarCliente");
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // agregamos los parámetros que son requeridos
+
+            cmd.Parameters.Add(new SqlParameter("@identidad", SqlDbType.Char, 13));
+            cmd.Parameters["@identidad"].Value = elCliente.identidad;
+
+            cmd.Parameters.Add(new SqlParameter("@nombre", SqlDbType.NVarChar, 100));
+            cmd.Parameters["@nombre"].Value = elCliente.nombres;
 
             // intentamos insertar al nuevo cliente
             try

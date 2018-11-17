@@ -43,10 +43,10 @@
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtCelular = new System.Windows.Forms.TextBox();
             this.grpOperaciones = new System.Windows.Forms.GroupBox();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.grpOperaciones.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,8 +67,9 @@
             this.lstClientes.Name = "lstClientes";
             this.lstClientes.Size = new System.Drawing.Size(183, 199);
             this.lstClientes.TabIndex = 1;
+            this.lstClientes.Click += new System.EventHandler(this.lstClientes_Click);
             this.lstClientes.SelectedIndexChanged += new System.EventHandler(this.lstClientes_SelectedIndexChanged);
-            this.lstClientes.DoubleClick += new System.EventHandler(this.lstClientes_DoubleClick);
+           
             // 
             // lblIdentidad
             // 
@@ -186,25 +187,15 @@
             this.grpOperaciones.TabStop = false;
             this.grpOperaciones.Text = "Operaciones";
             // 
-            // btnAgregar
+            // btnSalir
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(158, 19);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(102, 30);
-            this.btnAgregar.TabIndex = 0;
-            this.btnAgregar.Text = "Guardar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Location = new System.Drawing.Point(269, 19);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(102, 30);
-            this.btnEditar.TabIndex = 1;
-            this.btnEditar.Text = "Actualizar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            this.btnSalir.Location = new System.Drawing.Point(6, 19);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(102, 30);
+            this.btnSalir.TabIndex = 16;
+            this.btnSalir.Text = "Regresar";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click_1);
             // 
             // btnEliminar
             // 
@@ -216,15 +207,25 @@
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // btnSalir
+            // btnEditar
             // 
-            this.btnSalir.Location = new System.Drawing.Point(6, 19);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(102, 30);
-            this.btnSalir.TabIndex = 16;
-            this.btnSalir.Text = "Regresar";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click_1);
+            this.btnEditar.Location = new System.Drawing.Point(269, 19);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(102, 30);
+            this.btnEditar.TabIndex = 1;
+            this.btnEditar.Text = "Actualizar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Location = new System.Drawing.Point(158, 19);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(102, 30);
+            this.btnAgregar.TabIndex = 0;
+            this.btnAgregar.Text = "Guardar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // frmClientes
             // 

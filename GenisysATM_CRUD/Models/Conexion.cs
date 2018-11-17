@@ -66,10 +66,5 @@ namespace GenisysATM.Models
         {
             conn.Close();
         }
-
-        public SqlCommand EjecutarComando(string elComando)
-        {
-            return cmd = new SqlCommand(elComando, conn);
-        }
     }
 }

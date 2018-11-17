@@ -57,7 +57,7 @@ namespace GenisysATM.Models
 
                 return laCuenta;
             }
-            catch (SqlException ex)
+            catch (SqlException )
             {
                 return laCuenta;
             }
@@ -95,7 +95,7 @@ namespace GenisysATM.Models
 
                 return true;
             }
-            catch (SqlException ex)
+            catch (SqlException )
             {
                 return false;
             }
@@ -130,7 +130,7 @@ namespace GenisysATM.Models
 
                 return true;
             }
-            catch (SqlException ex)
+            catch (SqlException )
             {
                 return false;
             }

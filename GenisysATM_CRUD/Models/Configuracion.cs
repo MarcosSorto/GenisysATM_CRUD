@@ -47,7 +47,7 @@ namespace GenisysATM.Models
 
                 return valor;
             }
-            catch (SqlException ex)
+            catch (SqlException )
             {
                 return "Clave no válida";
             }
