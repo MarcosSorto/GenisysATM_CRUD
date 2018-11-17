@@ -128,6 +128,8 @@ namespace GenisysATM_CRUD
         private void frmClientes_Load(object sender, EventArgs e)
         {
             cargarDatos();
+            btnEditar.Enabled = false;
+            btnEliminar.Enabled = false;
             txtIdentidad.Focus();
         }
 
