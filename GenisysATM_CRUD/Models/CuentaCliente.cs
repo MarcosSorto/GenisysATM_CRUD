@@ -19,6 +19,8 @@ namespace GenisysATM.Models
         public decimal saldo { get; set; }
         public string pin { get; set; }
 
+        public string nuevoNumero { get; set; }
+
         // Constructores
         public CuentaCliente() { }
 
@@ -30,6 +32,7 @@ namespace GenisysATM.Models
         /// <returns>CuentaCliente el objeto que contiene la información de la cuenta del cliente</returns>
         public static CuentaCliente ObtenerCliente(string cuenta)
         {
+            
             Conexion conn = new Conexion(@"(local)\sqlexpress", "GenisysATM_V2");
             CuentaCliente laCuenta = new CuentaCliente();
             string sql = @"SELECT *
@@ -51,9 +54,11 @@ namespace GenisysATM.Models
                 while (rdr.Read())
                 {
                     laCuenta.numero = rdr.GetString(0);
-                    laCuenta.idCliente = rdr.GetInt16(1);
+                    laCuenta.idCliente = rdr.GetInt32(1);
                     laCuenta.saldo = rdr.GetDecimal(2);
                     laCuenta.pin = rdr.GetString(3);
+                    //removemos espacios en blanco de la cuenta del numero
+                    laCuenta.numero = laCuenta.numero.TrimEnd();
                 }
 
                 return laCuenta;
@@ -141,51 +146,68 @@ namespace GenisysATM.Models
             }
         }
 
-        /// <summary>
-        /// Obtiene las especificaciones de una cuenta en particular
-        /// perteneciente al cliente especificado.
-        /// </summary>
-        /// <param name="ElCliente"></param>
-        /// <returns></returns>
-        public static CuentaCliente ObtenerCuenta(string ElCliente)
-        {
-            Conexion conn = new Conexion(@"(local)\sqlexpress", "GenisysATM_V2");
-            CuentaCliente laCuenta = new CuentaCliente();
-            string sql = @"
-                            DECLARE @codigoCliente INT
-                            SET @codigoCliente = (SELECT id FROM ATM.Cliente WHERE nombres=@Cliente);
-                            SELECT * FROM ATM.CuentaCliente
-                            WHERE idCliente = @codigoCliente";
+       
 
-            SqlCommand cmd = conn.EjecutarComando(sql);
-            SqlDataReader rdr;
+        /// <summary>
+        /// Lista todas las cuentas que pertencen al cliente
+        /// seleccionado.
+        /// </summary>
+        /// <param name="Nombre"></param>
+        /// <returns></returns>
+        public static List<CuentaCliente> LeerTodasCuentas(string Nombre)
+        {
+            // Lista una de tipo de clientes
+            List<CuentaCliente> resultados = new List<CuentaCliente>();
+
+            //instanciamos la conexion
+            Conexion conexion = new Conexion(@"(local)\sqlexpress", "GenisysATM_V2");
+            string sql = @"DECLARE @codigoCliente INT
+                  SET @codigoCliente =(SELECT id FROM ATM.Cliente WHERE nombres=@Cliente);
+                  SELECT * FROM ATM.CuentaCliente WHERE idCliente=@codigoCliente;
+                  ";
+
+            SqlCommand cmd = conexion.EjecutarComando(sql);
+
 
             try
             {
+
                 using (cmd)
                 {
-                    cmd.Parameters.Add("@Cliente", SqlDbType.NVarChar, 100).Value = ElCliente;
-
-                    rdr = cmd.ExecuteReader();
+                    cmd.Parameters.Add("@Cliente", SqlDbType.NVarChar, 100).Value = Nombre;
                 }
+                // Establecer la conexión
+                conexion.EstablecerConexion();
 
+                SqlDataReader rdr = cmd.ExecuteReader();
+                // Ejecutar el query via un ExecuteReader
+
+
+
+                //Recorremos los elementos que se encuentra guardados
+                // en la lista tipo cliente
                 while (rdr.Read())
                 {
-                    laCuenta.numero = rdr.GetString(0);
-                    laCuenta.idCliente = rdr.GetInt16(1);
-                    laCuenta.saldo = rdr.GetDecimal(2);
-                    laCuenta.pin = rdr.GetString(3);
+                    CuentaCliente cuenta = new CuentaCliente();
+                    // Asignar los valores de Reader al objeto Departamento
+                    cuenta.numero = rdr.GetString(0);
+                    cuenta.idCliente = rdr.GetInt32(1);
+                    cuenta.saldo = rdr.GetDecimal(2);
+                    cuenta.pin = rdr.GetString(3);
+                    // Agregar el servicio a la List<servicio>
+                    resultados.Add(cuenta);
                 }
 
-                return laCuenta;
+                return resultados;
             }
             catch (SqlException)
             {
-                return laCuenta;
+                return resultados;
             }
             finally
             {
-                conn.CerrarConexion();
+                // Cerrar la conexión
+                conexion.CerrarConexion();
             }
         }
 
@@ -218,6 +240,106 @@ namespace GenisysATM.Models
             cmd.Parameters["@numero"].Value = laCuenta.numero;
 
             // intentamos insertar la nueva cuenta
+            try
+            {
+                // establecemos la conexión
+                conn.EstablecerConexion();
+
+                // ejecutamos el comando
+                cmd.ExecuteNonQuery();
+
+                return true;
+
+            }
+            catch (SqlException ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace + "Detalles de la excepción");
+                return false;
+            }
+            finally
+            {
+                conn.CerrarConexion();
+            }
+        }
+
+        /// <summary>
+        /// Se encarga de actualizar los datos de una cuenta
+        /// </summary>
+        /// <param name="laCuenta"></param>
+        /// <param name="cliente"></param>
+        /// <returns></returns>
+        public static bool ActualizarCuenta(CuentaCliente laCuenta, string cliente)
+        {
+
+            Conexion conn = new Conexion(@"(local)\sqlexpress", "GenisysATM_V2");
+
+            // enviamos y especificamos el comando a ejecutar
+            SqlCommand cmd = conn.EjecutarComando("sp_ActualizarCuentaCliente");
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // agregamos los parámetros que son requeridos
+
+            cmd.Parameters.Add(new SqlParameter("@cliente", SqlDbType.NVarChar, 100));
+            cmd.Parameters["@cliente"].Value = cliente;
+
+            cmd.Parameters.Add(new SqlParameter("@saldo", SqlDbType.Decimal));
+            cmd.Parameters["@saldo"].Value = laCuenta.saldo;
+
+            cmd.Parameters.Add(new SqlParameter("@pin", SqlDbType.Char, 4));
+            cmd.Parameters["@pin"].Value = laCuenta.pin;
+
+            cmd.Parameters.Add(new SqlParameter("@numero", SqlDbType.Char, 14));
+            cmd.Parameters["@numero"].Value = laCuenta.numero;
+
+            cmd.Parameters.Add(new SqlParameter("@nuevoNumero", SqlDbType.Char, 14));
+            cmd.Parameters["@nuevoNumero"].Value = laCuenta.nuevoNumero;
+
+            // intentamos Actualizar la nueva cuenta
+            try
+            {
+                // establecemos la conexión
+                conn.EstablecerConexion();
+
+                // ejecutamos el comando
+                cmd.ExecuteNonQuery();
+
+                return true;
+
+            }
+            catch (SqlException ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace + "Detalles de la excepción");
+                return false;
+            }
+            finally
+            {
+                conn.CerrarConexion();
+            }
+        }
+
+        /// <summary>
+        /// Se encarga de eliminar una cuenta que pertence al cliente especificado.
+        /// </summary>
+        /// <param name="laCuenta"></param>
+        /// <param name="cliente"></param>
+        /// <returns></returns>
+        public static bool EliminarCuenta(CuentaCliente laCuenta)
+        {
+
+            Conexion conn = new Conexion(@"(local)\sqlexpress", "GenisysATM_V2");
+
+            // enviamos y especificamos el comando a ejecutar
+            SqlCommand cmd = conn.EjecutarComando("sp_EliminarCuenta");
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // agregamos los parámetros que son requeridos
+
+            cmd.Parameters.Add(new SqlParameter("@numero", SqlDbType.Char, 14));
+            cmd.Parameters["@numero"].Value = laCuenta.numero;
+
+            // intentamos Eliminar la nueva cuenta
             try
             {
                 // establecemos la conexión
