@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.grpOpciones = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnCuentas = new System.Windows.Forms.Button();
             this.btnConfiguracion = new System.Windows.Forms.Button();
             this.btnTarjetas = new System.Windows.Forms.Button();
@@ -36,7 +37,6 @@
             this.btnClientes = new System.Windows.Forms.Button();
             this.lbltitulo = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.grpOpciones.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +55,16 @@
             this.grpOpciones.TabIndex = 7;
             this.grpOpciones.TabStop = false;
             this.grpOpciones.Text = "Opciones Disponibles";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(175, 147);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(102, 58);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Clientes y Servicios";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnCuentas
             // 
@@ -83,6 +93,7 @@
             this.btnTarjetas.TabIndex = 10;
             this.btnTarjetas.Text = "Tarjetas de \r\n  Crédito";
             this.btnTarjetas.UseVisualStyleBackColor = true;
+            this.btnTarjetas.Click += new System.EventHandler(this.btnTarjetas_Click);
             // 
             // btnServicios
             // 
@@ -123,16 +134,6 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click_1);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(175, 147);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 58);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Clientes y Servicios";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmPrincipal
             // 

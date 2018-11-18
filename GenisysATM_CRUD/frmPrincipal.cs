@@ -84,5 +84,16 @@ namespace GenisysATM_CRUD
         {
           
         }
+        /// <summary>
+        /// Crea una instancia del formulario CRUD Tarjetas de Crédito y lo
+        /// muestra en la pantalla.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnTarjetas_Click(object sender, EventArgs e)
+        {
+            frmTargetasCredito nuevo = new frmTargetasCredito();
+            nuevo.ShowDialog();
+        }
     }
 }

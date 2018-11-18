@@ -39,12 +39,14 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblIdentidad = new System.Windows.Forms.Label();
-            this.lstClientes = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lstTarjetasClientes = new System.Windows.Forms.ListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lstClientes = new System.Windows.Forms.ListBox();
             this.grpOperaciones.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpOperaciones
@@ -53,7 +55,7 @@
             this.grpOperaciones.Controls.Add(this.btnEliminar);
             this.grpOperaciones.Controls.Add(this.btnEditar);
             this.grpOperaciones.Controls.Add(this.btnAgregar);
-            this.grpOperaciones.Location = new System.Drawing.Point(60, 227);
+            this.grpOperaciones.Location = new System.Drawing.Point(60, 234);
             this.grpOperaciones.Name = "grpOperaciones";
             this.grpOperaciones.Size = new System.Drawing.Size(499, 57);
             this.grpOperaciones.TabIndex = 29;
@@ -68,6 +70,7 @@
             this.btnSalir.TabIndex = 16;
             this.btnSalir.Text = "Regresar";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnEliminar
             // 
@@ -77,6 +80,7 @@
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnEditar
             // 
@@ -86,6 +90,7 @@
             this.btnEditar.TabIndex = 1;
             this.btnEditar.Text = "Actualizar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnAgregar
             // 
@@ -95,6 +100,7 @@
             this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "Guardar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // txtlimite
             // 
@@ -115,7 +121,7 @@
             this.txtdescripcion.Location = new System.Drawing.Point(154, 135);
             this.txtdescripcion.Multiline = true;
             this.txtdescripcion.Name = "txtdescripcion";
-            this.txtdescripcion.Size = new System.Drawing.Size(263, 86);
+            this.txtdescripcion.Size = new System.Drawing.Size(263, 79);
             this.txtdescripcion.TabIndex = 23;
             // 
             // lblApellido
@@ -148,14 +154,6 @@
             this.lblIdentidad.TabIndex = 17;
             this.lblIdentidad.Text = "Descripción:";
             // 
-            // lstClientes
-            // 
-            this.lstClientes.FormattingEnabled = true;
-            this.lstClientes.Location = new System.Drawing.Point(12, 47);
-            this.lstClientes.Name = "lstClientes";
-            this.lstClientes.Size = new System.Drawing.Size(136, 173);
-            this.lstClientes.TabIndex = 16;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -168,27 +166,48 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.listBox1);
+            this.groupBox1.Controls.Add(this.lstTarjetasClientes);
             this.groupBox1.Location = new System.Drawing.Point(423, 22);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 199);
+            this.groupBox1.Size = new System.Drawing.Size(166, 199);
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tarjetas asignadas al cliente";
             // 
-            // listBox1
+            // lstTarjetasClientes
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(19, 25);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(144, 160);
-            this.listBox1.TabIndex = 17;
+            this.lstTarjetasClientes.FormattingEnabled = true;
+            this.lstTarjetasClientes.Location = new System.Drawing.Point(19, 25);
+            this.lstTarjetasClientes.Name = "lstTarjetasClientes";
+            this.lstTarjetasClientes.Size = new System.Drawing.Size(132, 160);
+            this.lstTarjetasClientes.TabIndex = 17;
+            this.lstTarjetasClientes.Click += new System.EventHandler(this.lstTarjetasClientes_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lstClientes);
+            this.groupBox2.Location = new System.Drawing.Point(12, 22);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(136, 199);
+            this.groupBox2.TabIndex = 31;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Seleccione un cliente";
+            // 
+            // lstClientes
+            // 
+            this.lstClientes.FormattingEnabled = true;
+            this.lstClientes.Location = new System.Drawing.Point(6, 19);
+            this.lstClientes.Name = "lstClientes";
+            this.lstClientes.Size = new System.Drawing.Size(124, 173);
+            this.lstClientes.TabIndex = 17;
+            this.lstClientes.Click += new System.EventHandler(this.lstClientes_Click);
             // 
             // frmTargetasCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(636, 296);
+            this.ClientSize = new System.Drawing.Size(610, 296);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpOperaciones);
             this.Controls.Add(this.txtlimite);
@@ -197,13 +216,14 @@
             this.Controls.Add(this.lblApellido);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblIdentidad);
-            this.Controls.Add(this.lstClientes);
             this.Controls.Add(this.label1);
             this.Name = "frmTargetasCredito";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Control de Cajeros Automáticos GenisysATM";
+            this.Load += new System.EventHandler(this.frmTargetasCredito_Load);
             this.grpOperaciones.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,9 +242,10 @@
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblIdentidad;
-        private System.Windows.Forms.ListBox lstClientes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lstTarjetasClientes;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ListBox lstClientes;
     }
 }

@@ -157,11 +157,11 @@ namespace GenisysATM.Models
                 while (rdr.Read())
                 {
                     Cliente cli= new Cliente();
-                    // Asignar los valores de Reader al objeto Departamento
+                    // Asignar los valores de Reader al objeto Cliente
                     cli.identidad= rdr.GetString(0);
                     cli.nombres = rdr.GetString(1);
 
-                    // Agregar el Departamento a la List<Departamento>
+                    // Agregar el Cliente a la List<Cliete>
                     resultados.Add(cli);
                 }
 
