@@ -57,6 +57,12 @@
     <Compile Include="frmConfiguraciones.Designer.cs">
       <DependentUpon>frmConfiguraciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCuentaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCuentaCliente.Designer.cs">
+      <DependentUpon>frmCuentaCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     <EmbeddedResource Include="frmConfiguraciones.resx">
       <DependentUpon>frmConfiguraciones.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCuentaCliente.resx">
+      <DependentUpon>frmCuentaCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +146,7 @@
     <Content Include="sp_Configuracion%28INSERT_UPDATE_DELETE%29.sql" />
     <Content Include="sp_ServicioPublico%28INSERT_UPDATE_DELETE%29.sql" />
     <Content Include="sp_ServiciosClientes%28INSERT_UPDATE_DELETE%29.sql" />
+    <Content Include="sp_TarjetaCredito%28INSERT_UPDATE_DELETE%29.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
