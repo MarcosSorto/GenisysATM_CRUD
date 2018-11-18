@@ -142,7 +142,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\sp_CuentaCliente%28INSERT_UPDATE_DELETE%29.sql" />
+    <Content Include="sp_CuentaCliente%28INSERT_UPDATE_DELETE%29.sql" />
     <Content Include="sp_Clientes%28INSERT_UPDATE_DELETE%29.sql" />
     <Content Include="sp_Configuracion%28INSERT_UPDATE_DELETE%29.sql" />
     <Content Include="sp_ServicioPublico%28INSERT_UPDATE_DELETE%29.sql" />

@@ -86,7 +86,7 @@ namespace GenisysATM.Models
             // Query SQL
             sql = @"SELECT *
                     FROM ATM.Cliente
-                    WHERE identidad = @Nombre";
+                    WHERE nombres = @Nombre";
 
             SqlCommand cmd = conexion.EjecutarComando(sql);
             SqlDataReader rdr;
