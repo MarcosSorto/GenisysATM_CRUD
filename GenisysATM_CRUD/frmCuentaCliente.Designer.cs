@@ -39,6 +39,8 @@
             this.lblIdentidad = new System.Windows.Forms.Label();
             this.lstClientes = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtNumero = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.grpOperaciones.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +56,7 @@
             this.grpOperaciones.TabIndex = 29;
             this.grpOperaciones.TabStop = false;
             this.grpOperaciones.Text = "Operaciones";
+            this.grpOperaciones.Enter += new System.EventHandler(this.grpOperaciones_Enter);
             // 
             // btnSalir
             // 
@@ -63,6 +66,7 @@
             this.btnSalir.TabIndex = 16;
             this.btnSalir.Text = "Regresar";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnEliminar
             // 
@@ -90,17 +94,18 @@
             this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "Guardar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // txtPin
             // 
-            this.txtPin.Location = new System.Drawing.Point(280, 142);
+            this.txtPin.Location = new System.Drawing.Point(280, 165);
             this.txtPin.Name = "txtPin";
             this.txtPin.Size = new System.Drawing.Size(211, 20);
             this.txtPin.TabIndex = 24;
             // 
             // txtSaldo
             // 
-            this.txtSaldo.Location = new System.Drawing.Point(280, 109);
+            this.txtSaldo.Location = new System.Drawing.Point(280, 132);
             this.txtSaldo.Name = "txtSaldo";
             this.txtSaldo.Size = new System.Drawing.Size(211, 20);
             this.txtSaldo.TabIndex = 23;
@@ -109,7 +114,7 @@
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(206, 142);
+            this.lblNombre.Location = new System.Drawing.Point(206, 165);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(27, 16);
             this.lblNombre.TabIndex = 18;
@@ -119,7 +124,7 @@
             // 
             this.lblIdentidad.AutoSize = true;
             this.lblIdentidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdentidad.Location = new System.Drawing.Point(206, 109);
+            this.lblIdentidad.Location = new System.Drawing.Point(206, 132);
             this.lblIdentidad.Name = "lblIdentidad";
             this.lblIdentidad.Size = new System.Drawing.Size(45, 16);
             this.lblIdentidad.TabIndex = 17;
@@ -132,6 +137,7 @@
             this.lstClientes.Name = "lstClientes";
             this.lstClientes.Size = new System.Drawing.Size(183, 199);
             this.lstClientes.TabIndex = 16;
+            this.lstClientes.Click += new System.EventHandler(this.lstClientes_Click);
             // 
             // label1
             // 
@@ -143,11 +149,30 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Módulo de Clientes y Cuentas";
             // 
+            // txtNumero
+            // 
+            this.txtNumero.Location = new System.Drawing.Point(281, 97);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(211, 20);
+            this.txtNumero.TabIndex = 31;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(207, 97);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 16);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "Numero";
+            // 
             // frmCuentaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(525, 316);
+            this.Controls.Add(this.txtNumero);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.grpOperaciones);
             this.Controls.Add(this.txtPin);
             this.Controls.Add(this.txtSaldo);
@@ -156,7 +181,9 @@
             this.Controls.Add(this.lstClientes);
             this.Controls.Add(this.label1);
             this.Name = "frmCuentaCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Control de Cajeros Automáticos GenisysATM";
+            this.Load += new System.EventHandler(this.frmCuentaCliente_Load);
             this.grpOperaciones.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -176,5 +203,7 @@
         private System.Windows.Forms.Label lblIdentidad;
         private System.Windows.Forms.ListBox lstClientes;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtNumero;
+        private System.Windows.Forms.Label label2;
     }
 }

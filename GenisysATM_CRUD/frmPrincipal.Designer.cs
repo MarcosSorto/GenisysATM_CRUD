@@ -74,6 +74,7 @@
             this.btnCuentas.TabIndex = 12;
             this.btnCuentas.Text = "Cuentas";
             this.btnCuentas.UseVisualStyleBackColor = true;
+            this.btnCuentas.Click += new System.EventHandler(this.btnCuentas_Click);
             // 
             // btnConfiguracion
             // 
